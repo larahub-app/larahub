@@ -34,10 +34,19 @@ Route::get('/', function () {
 
 /*
 |-------------------------------------------
+| User Profile Settings
+|-------------------------------------------
+*/
+
+Route::get('/settings', function () {
+    return view('settings.index');
+})->name('settings');
+
+/*
+|-------------------------------------------
 | Public User Profiles
 |-------------------------------------------
 */
 
 // Route::get('/users/{username}', [UserController::class, 'show'])
-//     ->middleware('auth')
 //     ->name('user.show');

@@ -1,21 +1,21 @@
 ![](logo.png)
 
-# Compose Hub for Laravel 
+# LaraHub
 
-Compose hub is your home for [Laravel](https://laravel.com) packages, application recipes, tools and more.
+LaraHub is your home for [Laravel](https://laravel.com) packages, starter kits, application recipes, and more.
 
 # Installing Locally
 
 #### Clone the repo
 
 ```bash
-git clone https://github.com/WyattCast44/laravel-hub.git
+git clone https://github.com/larahub-app/larahub.git
 ```
 
 #### Move into project
 
 ```bash
-cd compose-hub
+cd larahub
 ```
 
 #### Copy the env file
@@ -48,13 +48,13 @@ yarn install
 
 - [Create GitHub OAuth App](https://github.com/settings/applications/new)
 - URL:
-    - Authorization callback URL = http://hub.test/login/callback
+    - Authorization callback URL = http://larahub.test/login/callback
 - Add the client ID and secret to `.env` file
 
 ```bash
 GITHUB_CLIENT_ID=your-id
 GITHUB_CLIENT_SECRET=your-secret
-GITHUB_REDIRECT="https://hub.test/login/callback"
+GITHUB_REDIRECT="https://larahub.test/login/callback"
 ```
 
 #### Migrate Database
