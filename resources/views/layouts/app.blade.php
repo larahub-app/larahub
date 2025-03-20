@@ -11,8 +11,8 @@
     @vite('resources/js/app.js')
     
 </head>
-<body class="bg-neutral-100 antialiased text-gray-900 selection:bg-red-300 selection:text-black">
-    <header class="sticky top-0 bg-white">
+<body class="bg-white antialiased text-gray-900 selection:bg-red-300 selection:text-black @yield('body::classes')">
+    <header class="sticky top-0 bg-white/80 z-50 backdrop-blur-md">
 
         <div class="h-1.5 bg-red-500 w-full"></div>
 

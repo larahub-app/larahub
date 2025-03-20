@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('body::classes', '!bg-neutral-100')
+
 @section('content')
 
 <section class="max-w-4xl mx-auto flex gap-6 my-12">

@@ -24,3 +24,8 @@
         --color-accent-foreground: var(--color-white);
     }
 }
+
+/* make the scrollbar gutters stable */
+html {
+    scrollbar-gutter: stable;
+}
