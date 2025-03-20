@@ -13,10 +13,22 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('username')->unique();
+            $table->string('name')->nullable();
+            $table->string('email')->unique()->nullable();
+            $table->text('avatar')->nullable();
+            $table->text('bio')->nullable();
+            $table->text('website')->nullable();
+            $table->text('status')->nullable();
+            $table->string('auth_provider');
+            $table->string('auth_token')->nullable();
+            $table->string('auth_type')->default('user');
+            $table->boolean('laravel_employee')->default(false);
+            $table->boolean('unclaimed')->default(false);
+            $table->datetime('claimed_at')->nullable();
+            $table->json('meta')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('bluesky')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 /**
@@ -24,21 +23,36 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
+            'username' => fake()->unique()->userName(),
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
+            'avatar' => null,
+            'bio' => fake()->optional()->sentence(),
+            'website' => fake()->optional()->url(),
+            'status' => fake()->optional()->sentence(),
+            'auth_provider' => 'github',
+            'auth_token' => null,
+            'auth_type' => 'user',
+            'laravel_employee' => fake()->boolean(),
+            'unclaimed' => fake()->boolean(),
+            'claimed_at' => fake()->optional()->dateTime(),
+            'meta' => null,
             'remember_token' => Str::random(10),
         ];
     }
 
-    /**
-     * Indicate that the model's email address should be unverified.
-     */
-    public function unverified(): static
+    public function unclaimed(): static
     {
         return $this->state(fn (array $attributes) => [
-            'email_verified_at' => null,
+            'unclaimed' => true,
+        ]);
+    }
+
+    public function claimed(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'unclaimed' => false,
+            'claimed_at' => now(),
         ]);
     }
 }
