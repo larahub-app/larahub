@@ -32,7 +32,7 @@ class LoginController
 
         Auth::login($user);
 
-        return redirect()->route('home');
+        return redirect()->intended(default: route('home'));
     }
 
     protected function registerNewUser(SocialiateUser $user)

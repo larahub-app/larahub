@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Package;
 use App\Models\User;
 use Carbon\CarbonImmutable;
+use Github\Client;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\Date;
@@ -25,13 +27,15 @@ class AppServiceProvider extends ServiceProvider
             ->configureUrls()
             ->configureCommands()
             ->configureDates()
-            ->configureTelescope();
+            ->configureTelescope()
+            ->configureGitHubClient();
     }
 
     private function configureMorphMaps(): self
     {
         Relation::enforceMorphMap([
             'user' => User::class,
+            'package' => Package::class,
         ]);
 
         return $this;
@@ -75,6 +79,17 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
             $this->app->register(TelescopeServiceProvider::class);
         }
+
+        return $this;
+    }
+
+    private function configureGitHubClient(): self
+    {
+        $this->app->singleton(Client::class, function ($app) {
+            $client = new Client;
+
+            return $client;
+        });
 
         return $this;
     }

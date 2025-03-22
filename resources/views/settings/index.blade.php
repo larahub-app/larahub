@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('body::classes', '!bg-neutral-100')
+@section('body::classes', '!bg-neutral-100 dark:!bg-neutral-900')
 
 @section('content')
 
@@ -57,7 +57,7 @@
                 </flux:heading>
 
 
-                <div class="prose prose-red prose-sm">
+                <div class="prose prose-red prose-sm dark:prose-invert">
                     <p>
                         This action is irreversible. When you delete your account:
                     </p>

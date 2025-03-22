@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('bio')->nullable();
             $table->text('website')->nullable();
             $table->text('status')->nullable();
-            $table->string('auth_provider');
+            $table->string('auth_provider')->nullable();
             $table->string('auth_token')->nullable();
             $table->string('auth_type')->default('user');
             $table->boolean('laravel_employee')->default(false);

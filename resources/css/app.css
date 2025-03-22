@@ -29,3 +29,11 @@
 html {
     scrollbar-gutter: stable;
 }
+
+[data-flux-button] {
+    @apply select-none;
+}
+
+[data-flux-label] {
+    @apply select-none;
+}

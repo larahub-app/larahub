@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -56,5 +57,46 @@ class User extends Authenticatable
             'claimed_at' => 'datetime',
             'meta' => 'array',
         ];
+    }
+
+    public function getRouteKeyName(): string
+    {
+        return 'username';
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
+
+    public function getWebsiteAttribute(): ?string
+    {
+        $value = $this->attributes['website'];
+
+        if ($value === null) {
+            return null;
+        }
+
+        if (str($value)->startsWith(['http://'])) {
+            $value = str($value)->replace('http://', 'https://');
+        } elseif (str($value)->startsWith(['//'])) {
+            $value = str($value)->replace('//', 'https://');
+        } else {
+            $value = 'https://'.$value;
+        }
+
+        return (string) $value;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
+
+    public function packages(): HasMany
+    {
+        return $this->hasMany(Package::class, 'user_id');
     }
 }

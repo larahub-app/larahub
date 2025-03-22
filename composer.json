@@ -11,6 +11,11 @@
     "require": {
         "php": "^8.2",
         "blade-ui-kit/blade-icons": "^1.8",
+        "elgigi/commonmark-emoji": "^2.0",
+        "graham-campbell/markdown": "^16.0",
+        "guzzlehttp/guzzle": "^7.9",
+        "http-interop/http-factory-guzzle": "^1.2",
+        "knplabs/github-api": "^3.16",
         "laravel/framework": "^12.0",
         "laravel/socialite": "^5.18",
         "laravel/tinker": "^2.10.1",

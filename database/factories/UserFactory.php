@@ -26,7 +26,7 @@ class UserFactory extends Factory
             'username' => fake()->unique()->userName(),
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
-            'avatar' => null,
+            'avatar' => 'https://unavatar.io/'.fake()->username(),
             'bio' => fake()->optional()->sentence(),
             'website' => fake()->optional()->url(),
             'status' => fake()->optional()->sentence(),

@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\Auth\AuthenticatedSessionsController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\PackagesController;
+use App\Http\Controllers\PackageStarterKitsController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,9 +41,9 @@ Route::get('/', function () {
 |-------------------------------------------
 */
 
-Route::get('/settings', function () {
-    return view('settings.index');
-})->name('settings');
+Route::view('/settings', 'settings.index')
+    ->middleware('auth')
+    ->name('settings');
 
 /*
 |-------------------------------------------
@@ -48,5 +51,28 @@ Route::get('/settings', function () {
 |-------------------------------------------
 */
 
-// Route::get('/users/{username}', [UserController::class, 'show'])
-//     ->name('user.show');
+Route::get('/users/{user}', [UsersController::class, 'show'])
+    ->name('users.show');
+
+/*
+|-------------------------------------------
+| Package Routes
+|-------------------------------------------
+*/
+
+Route::get('/packages', [PackagesController::class, 'index'])
+    ->name('packages.index');
+
+Route::get('/packages/create', [PackagesController::class, 'create'])
+    ->middleware(['auth'])
+    ->name('packages.create');
+
+Route::post('/packages', [PackagesController::class, 'store'])
+    ->middleware(['auth', 'throttle:10,1'])
+    ->name('packages.store');
+
+Route::get('/packages/{user}/{package}', [PackagesController::class, 'show'])
+    ->name('packages.show');
+
+Route::get('/packages/{user}/{package}/starter-kits', [PackageStarterKitsController::class, 'index'])
+    ->name('packages.show.starter-kits');
