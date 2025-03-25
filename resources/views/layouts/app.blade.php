@@ -28,7 +28,7 @@
                     Packages
                 </flux:button>
 
-                <flux:button href="#" variant="ghost" class="text-xl font-semibold hover:text-red-600">
+                <flux:button href="{{ route('kits.index') }}" variant="ghost" class="text-xl font-semibold hover:text-red-600">
                     Starter Kits
                 </flux:button>
 
@@ -57,7 +57,7 @@
                             <flux:navmenu.item href="{{ route('packages.create') }}" icon="archive-box">
                                 Submit Package
                             </flux:navmenu.item>
-                            <flux:navmenu.item href="#" icon="square-3-stack-3d">
+                            <flux:navmenu.item href="{{ route('kits.create') }}" icon="square-3-stack-3d">
                                 Submit Starter Kit
                             </flux:navmenu.item>
                             <flux:navmenu.item href="#" icon="code-bracket">

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Package;
 use App\Models\User;
-use Illuminate\Http\Request;
 
 class PackagesController
 {
@@ -33,10 +32,5 @@ class PackagesController
     public function create()
     {
         return view('packages.create');
-    }
-
-    public function store(Request $request)
-    {
-        dd($request->all());
     }
 }

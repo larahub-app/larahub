@@ -3,16 +3,16 @@
 @section('body::classes', '!bg-neutral-100 dark:!bg-neutral-900')
 
 @section('content')
-
+    
     <div class="max-w-6xl mx-auto my-10 !space-y-4">
-        <flux:heading size="xl" class="!text-3xl">Packages</flux:heading>
+        <flux:heading size="xl" class="!text-3xl">Starter Kits</flux:heading>
         <flux:subheading size="lg">
-            Packages are bundles of code that you can use to add functionality to your Laravel application.
+            Starter kits are pre-configured Laravel projects that you can use to start your next project.
         </flux:subheading>
         <flux:separator />
     </div>
-
-    <div class="max-w-6xl mx-auto flex gap-8 my-12">
+    
+    <div class="max-w-6xl mx-auto flex gap-8 my-10">
 
         <div class="w-64 space-y-4 sticky top-20">
 
@@ -27,45 +27,42 @@
 
                 <flux:separator />
 
-                <flux:heading size="lg">Category</flux:heading>
-                <flux:checkbox label="Frontend" value="frontend" />
-                <flux:checkbox label="Backend" value="backend" />
-                <flux:checkbox label="Full Stack" value="full-stack" />
-
-                <flux:separator />
-
                 <flux:heading size="lg">Stack</flux:heading>
                 <flux:checkbox label="Livewire" value="livewire" />
                 <flux:checkbox label="Inertia" value="inertia" />
                 <flux:checkbox label="React" value="react" />
                 <flux:checkbox label="Vue" value="vue" />
-                <flux:checkbox label="Blade" value="blade" />                
+                <flux:checkbox label="Blade" value="blade" />
+                <flux:checkbox label="Svelte" value="svelte" />
+                <flux:checkbox label="Other" value="other" />
 
             </flux:card>
         </div>
 
         <div class="flex-1 space-y-4">
-            @foreach ($packages as $package)
+            @foreach ($kits as $kit)
                 <flux:card class="space-y-4">
                     <flux:heading size="lg">
                         <div class="flex items-center space-x-4">
-                            <flux:avatar class="!size-8 flex-shrink-0" src="{{ $package->user->avatar }}" />
+                            <flux:avatar class="!size-8 flex-shrink-0" src="{{ $kit->user->avatar }}" />
                             <div>
-                                <a href="{{ route('users.show', $package->user) }}"
-                                    class="text-red-500 underline">{{ $package->vendor }}</a>
+                                <a href="{{ route('users.show', $kit->user) }}"
+                                    class="text-red-500 underline">{{ $kit->vendor }}</a>
                                 /
-                                <a href="{{ route('packages.show', [$package->user, $package]) }}"
-                                    class="text-red-500 underline">{{ $package->name }}</a>
+                                <a href="{{ route('kits.show', [$kit->user, $kit]) }}"
+                                    class="text-red-500 underline">{{ $kit->name }}</a>
                             </div>
                         </div>
                     </flux:heading>
                     <div class="prose dark:prose-invert max-w-none">
-                        {{ str($package->description)->limit(250) }}
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi quos voluptatum rerum sed quibusdam
+                        eveniet earum molestiae omnis ad, aliquam distinctio quam provident blanditiis expedita? Natus, in
+                        rem! Ea, cupiditate?
                     </div>
                 </flux:card>
             @endforeach
 
-            {{ $packages->links() }}
+            {{ $kits->links() }}
         </div>
 
     </div>

@@ -3,12 +3,14 @@
 namespace App\Providers;
 
 use App\Models\Package;
+use App\Models\StarterKit;
 use App\Models\User;
 use Carbon\CarbonImmutable;
 use Github\Client;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
@@ -22,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this
+            ->configureRoutes() 
             ->configureMorphMaps()
             ->configureModels()
             ->configureUrls()
@@ -36,6 +39,7 @@ class AppServiceProvider extends ServiceProvider
         Relation::enforceMorphMap([
             'user' => User::class,
             'package' => Package::class,
+            'kit' => StarterKit::class,
         ]);
 
         return $this;
@@ -44,6 +48,13 @@ class AppServiceProvider extends ServiceProvider
     private function configureModels(): self
     {
         Model::shouldBeStrict(! app()->isProduction());
+
+        return $this;
+    }
+
+    private function configureRoutes(): self
+    {
+        Route::model('kit', StarterKit::class);
 
         return $this;
     }

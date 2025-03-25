@@ -70,3 +70,9 @@ You can run the application test suite after setup by running the following comm
 ```bash
 php artisan test --parallel
 ```
+
+## Development Resources
+
+- https://github.com/KnpLabs/php-github-api
+- https://github.dev/tighten/novapackages
+- https://github.com/tnylea/laravel-new

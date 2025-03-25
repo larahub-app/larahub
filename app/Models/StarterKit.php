@@ -6,24 +6,19 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Package extends Model
+class StarterKit extends Model
 {
-    /** @use HasFactory<\Database\Factories\PackageFactory> */
+    /** @use HasFactory<\Database\Factories\StarterKitFactory> */
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
-        'submitter_id',
+        'display_name',
         'name',
         'vendor',
-        'display_name',
-        'description',
         'repo_url',
         'official',
         'parsed_readme',
         'readme_last_parsed_at',
-        'type',
-        'installation_method',
         'website',
         'languages',
         'stars_count',
@@ -31,6 +26,13 @@ class Package extends Model
         'default_branch',
         'meta',
         'processed_at',
+        'templating_engine',
+        'css_framework',
+        'inertia',
+        'panel_builder',
+        'authentication',
+        'user_id',
+        'submitter_id',
     ];
 
     public function casts()
@@ -52,7 +54,7 @@ class Package extends Model
     public function hasBeenProcessed(): bool
     {
         return $this->processed_at !== null;
-    }
+    }    
 
     /*
     |-------------------------------------------
@@ -78,5 +80,5 @@ class Package extends Model
     public function submitter()
     {
         return $this->belongsTo(User::class, 'submitter_id');
-    }
+    }    
 }

@@ -4,7 +4,10 @@ use App\Http\Controllers\Auth\AuthenticatedSessionsController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PackagesController;
 use App\Http\Controllers\PackageStarterKitsController;
+use App\Http\Controllers\StarterKitsController;
 use App\Http\Controllers\UsersController;
+use App\Models\StarterKit;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -76,3 +79,24 @@ Route::get('/packages/{user}/{package}', [PackagesController::class, 'show'])
 
 Route::get('/packages/{user}/{package}/starter-kits', [PackageStarterKitsController::class, 'index'])
     ->name('packages.show.starter-kits');
+
+/*
+|-------------------------------------------
+| Starter Kits
+|-------------------------------------------
+*/
+
+Route::get('/kits', [StarterKitsController::class, 'index'])
+    ->name('kits.index');
+
+Route::get('/kits/create', [StarterKitsController::class, 'create'])
+    ->middleware(['auth'])
+    ->name('kits.create');
+
+Route::get('/kits/{user}/{kit}', function (User $user, StarterKit $kit) {
+    return view('kits.show', [
+        'user' => $user,
+        'kit' => $kit,
+    ]);
+})
+    ->name('kits.show');

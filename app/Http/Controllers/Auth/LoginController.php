@@ -29,8 +29,7 @@ class LoginController
         } else {
             $user = $this->updateUser($user, $developer);
         }
-
-        Auth::login($user);
+        Auth::login($user, remember: true);
 
         return redirect()->intended(default: route('home'));
     }
