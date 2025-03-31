@@ -9,13 +9,7 @@ class PackagesController
 {
     public function index()
     {
-        $packages = Package::latest()->processed()->paginate(5);
-
-        $packages->load(['user', 'submitter']);
-
-        return view('packages.index', [
-            'packages' => $packages,
-        ]);
+        return view('packages.index');
     }
 
     public function show(User $user, Package $package)

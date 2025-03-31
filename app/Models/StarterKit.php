@@ -54,7 +54,7 @@ class StarterKit extends Model
     public function hasBeenProcessed(): bool
     {
         return $this->processed_at !== null;
-    }    
+    }
 
     /*
     |-------------------------------------------
@@ -80,5 +80,5 @@ class StarterKit extends Model
     public function submitter()
     {
         return $this->belongsTo(User::class, 'submitter_id');
-    }    
+    }
 }

@@ -36,7 +36,7 @@ return new class extends Migration
             $table->boolean('inertia')->default(false);
             $table->boolean('panel_builder')->default(false);
             $table->boolean('authentication')->default(false);
-            
+
             $table->timestamps();
         });
     }

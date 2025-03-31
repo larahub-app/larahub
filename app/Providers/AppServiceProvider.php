@@ -24,12 +24,13 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this
-            ->configureRoutes() 
+            ->configureRoutes()
             ->configureMorphMaps()
             ->configureModels()
             ->configureUrls()
             ->configureCommands()
             ->configureDates()
+            ->configureRequests()
             ->configureTelescope()
             ->configureGitHubClient();
     }
@@ -81,6 +82,11 @@ class AppServiceProvider extends ServiceProvider
     {
         Date::use(CarbonImmutable::class);
 
+        return $this;
+    }
+
+    private function configureRequests(): self
+    {
         return $this;
     }
 

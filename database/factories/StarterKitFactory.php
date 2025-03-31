@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\StarterKit>
  */
@@ -38,7 +39,7 @@ class StarterKitFactory extends Factory
             'css_framework' => fake()->randomElement(['tailwind', 'bootstrap', 'other']),
             'inertia' => fake()->boolean(),
             'panel_builder' => fake()->boolean(),
-            'authentication' => fake()->boolean(),            
+            'authentication' => fake()->boolean(),
         ];
     }
 }

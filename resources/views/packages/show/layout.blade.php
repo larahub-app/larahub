@@ -22,6 +22,16 @@
                         <flux:button size="sm" icon="github" href="{{ $package->repo_url }}">
                             GitHub
                         </flux:button>
+                        @if ($package->installation_method == 'composer')
+                            <flux:button size="sm" icon="packagist" href="{{ $package->repo_url }}">
+                                Packagist
+                            </flux:button>
+                        @endif
+                        @if ($package->installation_method == 'npm')
+                            <flux:button size="sm" icon="npm" href="{{ $package->repo_url }}">
+                                NPM
+                            </flux:button>
+                        @endif
                         @if ($package->website)
                             <flux:button size="sm" icon="link" href="{{ $package->website }}">Website</flux:button>
                         @endif

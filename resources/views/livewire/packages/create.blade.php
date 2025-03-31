@@ -12,9 +12,22 @@
 
         <flux:separator />
 
-        <div class="space-y-6">
+        <div class="space-y-8">
             <flux:input label="GitHub URL" wire:model="github_url" type="url" required
                 description="We will parse the repository and extract package information." />
+
+            <flux:field>
+                <flux:label>Package Categories</flux:label>
+                <flux:description>
+                    Help others find your package by selecting the appropriate categories.
+                </flux:description>
+                <flux:select variant="listbox" searchable indicator="checkbox" placeholder="Select categories" multiple wire:model="categories">
+                    @foreach ($this->availableCategories as $key => $category)
+                        <flux:select.option value="{{ $key }}">
+                            {{ $category }}</flux:select.option>
+                    @endforeach
+                </flux:select>
+            </flux:field>
 
             <flux:radio.group label="Package Type" variant="segmented" wire:model="package_type" required
                 description="The primary language of the package.">
@@ -29,6 +42,9 @@
                 <flux:radio label="NPM" value="npm" />
                 <flux:radio label="Other" value="other" />
             </flux:radio.group>
+
+            <flux:separator />
+
         </div>
 
         <div class="mt-8 flex justify-end">

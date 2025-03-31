@@ -74,7 +74,7 @@ class User extends Authenticatable
     {
         $value = $this->attributes['website'];
 
-        if ($value === null) {
+        if ($value === null || $value === '') {
             return null;
         }
 

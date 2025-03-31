@@ -9,18 +9,24 @@ use Livewire\Component;
 
 class Create extends Component
 {
-    public string $name = '';   
+    public string $name = '';
+
     public string $github_url = '';
+
     public string $templating_engine = '';
+
     public string $inertia = '';
+
     public string $panel_builder = '';
+
     public string $authentication = '';
+
     public string $css_framework = '';
 
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'min:3','max:255'],
+            'name' => ['required', 'string', 'min:3', 'max:255'],
             'github_url' => ['required', 'url', 'unique:starter_kits,repo_url', 'max:255', new PubliclyAvailbleGitHubRepo],
             'templating_engine' => ['required', 'string', 'max:255', 'in:livewire,blade,react,vue,svelte,other'],
             'inertia' => ['required', 'string', 'max:255', 'in:yes,no'],
