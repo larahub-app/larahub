@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Article;
 use App\Models\Package;
 use App\Models\StarterKit;
 use App\Models\User;
@@ -45,6 +46,7 @@ class AppServiceProvider extends ServiceProvider
             'user' => User::class,
             'package' => Package::class,
             'kit' => StarterKit::class,
+            'article' => Article::class,
         ]);
 
         return $this;

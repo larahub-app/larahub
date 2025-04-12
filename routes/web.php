@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthenticatedSessionsController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Packages\PackageArticlesController;
 use App\Http\Controllers\PackagesController;
 use App\Http\Controllers\PackageStarterKitsController;
 use App\Http\Controllers\StarterKitsController;
@@ -79,6 +80,13 @@ Route::get('/packages/{user}/{package}', [PackagesController::class, 'show'])
 
 Route::get('/packages/{user}/{package}/starter-kits', [PackageStarterKitsController::class, 'index'])
     ->name('packages.show.starter-kits');
+
+Route::get('/packages/{user}/{package}/articles', [PackageArticlesController::class, 'index'])
+    ->name('packages.show.articles');
+
+Route::get('/packages/{user}/{package}/articles/create', [PackageArticlesController::class, 'create'])
+    ->middleware(['auth'])
+    ->name('packages.show.articles.create');
 
 /*
 |-------------------------------------------

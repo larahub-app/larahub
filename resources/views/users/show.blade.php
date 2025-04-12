@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('body::classes', '!bg-neutral-100 dark:!bg-neutral-800')
+@section('body::classes', '!bg-neutral-100 dark:!bg-neutral-900')
 
 @section('content')
 
-    <section class="max-w-5xl mx-auto p-12 space-y-8">
+    <section class="max-w-4xl mx-auto my-12 space-y-8">
 
         <flux:card>
-            <div class="flex gap-8 sele">
+            <div class="flex gap-8">
                 <flux:avatar src="{{ $user->avatar }}" class="size-32 flex-shrink-0" />
                 <div class="flex flex-col !space-y-4">
                     <flux:heading size="lg" class="!text-3xl">

@@ -16,7 +16,7 @@
                         {{ $package->name }}
                     </flux:heading>
                     <flux:subheading class="text-[1.0rem]">
-                        {{ $package->description }}
+                        {{ str($package->description)->limit(300) }}
                     </flux:subheading>
                     <div class="flex gap-2">
                         <flux:button size="sm" icon="github" href="{{ $package->repo_url }}">
@@ -47,7 +47,8 @@
                 icon="square-3-stack-3d">Starter Kits</flux:tab>
             <flux:tab href="#" icon="code-bracket">Recipes</flux:tab>
             <flux:tab href="#" icon="square-2-stack">Related</flux:tab>
-            <flux:tab href="#" icon="newspaper">Articles</flux:tab>
+            <flux:tab href="{{ route('packages.show.articles', [$package->user, $package->name]) }}"
+                icon="newspaper">Articles</flux:tab>
         </flux:tabs>
 
         @yield('page')

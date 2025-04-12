@@ -65,6 +65,7 @@
                         <li>All of your content will be permanently deleted.</li>
                         <li>All of your starter kits posts will be permanently deleted.</li>
                         <li>All of your application recipes will be permanently deleted.</li>
+                        <li>Packages that other users submitted that are associated with your account will continue to exist.</li>
                     </ul>
                 </div>
 
