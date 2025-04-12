@@ -9,10 +9,13 @@ use Carbon\CarbonImmutable;
 use Github\Client;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
+use Phiki\CommonMark\PhikiExtension;
+use Phiki\Theme\Theme;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -32,7 +35,8 @@ class AppServiceProvider extends ServiceProvider
             ->configureDates()
             ->configureRequests()
             ->configureTelescope()
-            ->configureGitHubClient();
+            ->configureGitHubClient()
+            ->configurePhikiExtension();
     }
 
     private function configureMorphMaps(): self
@@ -87,6 +91,8 @@ class AppServiceProvider extends ServiceProvider
 
     private function configureRequests(): self
     {
+        RequestException::dontTruncate();
+
         return $this;
     }
 
@@ -106,6 +112,21 @@ class AppServiceProvider extends ServiceProvider
             $client = new Client;
 
             return $client;
+        });
+
+        return $this;
+    }
+
+    private function configurePhikiExtension(): self
+    {
+        $this->app->bind(PhikiExtension::class, function () {
+            return new PhikiExtension(
+                theme: [
+                    'light' => Theme::Nord,
+                    'dark' => Theme::GithubLightHighContrast,
+                ],
+                withWrapper: true
+            );
         });
 
         return $this;

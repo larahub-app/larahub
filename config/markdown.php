@@ -16,6 +16,7 @@ use League\CommonMark\Extension\Autolink\AutolinkExtension;
 use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
 use League\CommonMark\Extension\GithubFlavoredMarkdownExtension;
 use League\CommonMark\Extension\Table\TableExtension;
+use Phiki\CommonMark\PhikiExtension;
 
 return [
 
@@ -56,6 +57,7 @@ return [
         AutolinkExtension::class,
         GithubFlavoredMarkdownExtension::class,
         EmojiExtension::class,
+        PhikiExtension::class,
     ],
 
     /*
